@@ -68,3 +68,6 @@ group :development do
 
   gem 'rubocop', '>= 1.0', '< 2.0'
 end
+
+# User authentication
+gem 'devise'
