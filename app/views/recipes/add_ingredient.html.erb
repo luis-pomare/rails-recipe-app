@@ -1,23 +1,18 @@
 <h1>New ingredient</h1>
 
-<%= render "form", recipe: @recipe %>
-
-<br>
-
-<h1>Foods</h1>
-
-<div id="foods">
-  <% @foods.each do |food| %>
-    <p>
-      <strong>Name:</strong>
-      <%= food.name %>
-    </p>
-    
-    <p>
-      <%= link_to "Show this food", food %>
-    </p>
-  <% end %>
+<div id="available-foods">
+  <p>Choose one food</p>
+  <span class="available-foods-list">
+    <% @foods.each do |food| %>
+      <p>
+        <strong>Name:</strong>
+        <%= food.name %>
+      </p>
+    <% end %>
+  </span>
 </div>
+
+<p>Add new food</p>
 
 <div>
   <%= link_to "Back to recipes", recipes_path %>
