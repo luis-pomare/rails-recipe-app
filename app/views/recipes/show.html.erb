@@ -1,6 +1,22 @@
 <p style="color: green"><%= notice %></p>
 
-<%= render @recipe %>
+<div class='recipe_container'>
+  <%= form_with(model: @recipe, url: "/recipes/#{@recipe.id}", method: :patch) do |form| %>
+    <%= form.check_box :public, checked: !@recipe.public?, class: 'no_visible'%>
+
+    <% if @recipe.public %>
+    <% button_message = 'Make recipe private' %>
+    <% button_class = 'make-recipe-private' %>
+    <% else %>
+    <% button_message = 'Make recipe public' %>
+    <% button_class = 'make-recipe-public' %>
+    <% end %>
+
+    <%= form.submit "#{button_message}", class: "#{button_class}" %>
+  <% end %>
+
+  <%= render @recipe %>
+</div>
 
 <div>
   <%= link_to "Edit this recipe", edit_recipe_path(@recipe) %> |

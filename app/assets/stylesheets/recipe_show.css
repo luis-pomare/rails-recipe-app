@@ -1,0 +1,9 @@
+.no_visible {
+  display: none;
+}
+
+.make-recipe-public {
+  color: #0c5;
+  border: 3px solid #0c5;
+}
+
