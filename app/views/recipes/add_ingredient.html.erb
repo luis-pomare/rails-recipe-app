@@ -2,6 +2,30 @@
 
 <div id="available-foods">
   <p>Choose one food</p>
+  <%= form_with(model: @new_recipe_food, url: recipe_foods_path, method: :post) do |form| %>
+    
+    <% if @new_recipe_food.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(@new_recipe_food.errors.count, "error") %> prohibited this recipe food from being saved:</h2>
+
+      <ul>
+        <% @new_recipe_food.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+    <% end %>
+
+    <div>
+      <%= form.label :quantity, style: "display: block" %>
+      <%= form.number_field :quantity %>
+    </div>
+    
+    <div>
+      <%= form.submit "Add ingredient" %>
+    </div>
+  <% end %>
+
   <span class="available-foods-list">
     <% @foods.each do |food| %>
       <p>
