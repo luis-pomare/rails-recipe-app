@@ -56,6 +56,7 @@ class RecipesController < ApplicationController
   end
 
   def add_ingredient
+    @foods = Food.where(user: current_user)
   end
 
   private
