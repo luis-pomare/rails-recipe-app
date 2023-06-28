@@ -2,7 +2,7 @@ class RecipeFoodsController < ApplicationController
   def create
     @recipe_food = RecipeFood.new(recipe_food_params)
     @recipe_food.recipe = Recipe.find(params[:recipe_food][:recipe_id])
-    @recipe_food.food = Food.first
+    @recipe_food.food = Food.find(params[:food_id])
 
     respond_to do |format|
       if @recipe_food.save

@@ -18,6 +18,8 @@
 
     <%= form.hidden_field :recipe_id, value: params[:id] %>
 
+    <%= select_tag :food_id, options_from_collection_for_select(@foods, :id, :name), prompt: "Select the food to add" %>
+
     <div>
       <%= form.label :quantity, style: "display: block" %>
       <%= form.number_field :quantity %>
