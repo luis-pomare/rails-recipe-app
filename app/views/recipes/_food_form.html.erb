@@ -31,6 +31,15 @@
   </div>
 
   <div>
+    <%= form.number_field :recipe_id, style: "display: none", value: params[:id] %>
+  </div>
+
+  <div>
+    <%= form.label :recipe_food_quantity, style: "display: block" %>
+    <%= form.number_field :recipe_food_quantity %>
+  </div>
+
+  <div>
     <%= form.submit %>
   </div>
 <% end %>
