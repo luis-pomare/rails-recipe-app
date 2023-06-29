@@ -24,6 +24,7 @@ class FoodsController < ApplicationController
 
     respond_to do |format|
       if @food.save
+        RecipeFood.create(recipe: Recipe.find(params[:food][:recipe_id]), food: @food, quantity: params[:food][:recipe_food_quantity])
         format.html { redirect_to food_url(@food), notice: 'Food was successfully created.' }
         format.json { render :show, status: :created, location: @food }
       else
