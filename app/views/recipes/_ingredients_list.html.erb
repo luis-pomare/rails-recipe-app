@@ -11,6 +11,10 @@
       <td><%= recipe_food.food.name %></td>
       <td><%= recipe_food.quantity %></td>
       <td><%= recipe_food.food.price %></td>
+      <td>
+        <%= button_to "Destroy", recipe_food.food, method: :delete, class: 'table_button' %>,
+        <%= link_to "Edit", edit_food_path(recipe_food.food) %>
+      </td>
     </tr>
   <% end %>
 </table>
