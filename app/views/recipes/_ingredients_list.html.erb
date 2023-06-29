@@ -1,8 +1,17 @@
 <div class="recipe_ingredients">
+  <table>
+  <tr>
+    <th>Food</th>
+    <th>Quantity</th>
+    <th>Value</th>
+    <th>Actions</th>
+  </tr>
   <% @recipe.recipe_food.each do |recipe_food| %>
-    <p>
-      <strong><%= recipe_food.food.name %></strong>
-      <%= recipe_food.quantity %>
-    </p>
+    <tr>
+      <td><%= recipe_food.food.name %></td>
+      <td><%= recipe_food.quantity %></td>
+      <td><%= recipe_food.food.price %></td>
+    </tr>
   <% end %>
+</table>
 </div>
