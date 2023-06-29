@@ -1,12 +1,17 @@
 <h1>New ingredient</h1>
 
-<div id="available-foods">
-  <p>Choose one food</p>
-  <%= render "ingredient_form", new_recipe_food: @new_recipe_food %>  
-  
-  <p>Add a new food</p>
-  <%= render "food_form", food: @new_food %>  
+<div class="add_ingredient_container">
+  <div>
+    <p>Choose one food</p>
+    <%= render "ingredient_form", new_recipe_food: @new_recipe_food %>  
+  </div>
 
+  <h5> or/ </h5>
+
+  <div>
+    <p>Add a new food</p>
+    <%= render "food_form", food: @new_food %>  
+  </div>
 </div>
 
 
