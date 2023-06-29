@@ -24,7 +24,10 @@ class FoodsController < ApplicationController
 
     respond_to do |format|
       if @food.save
-        RecipeFood.create(recipe: Recipe.find(params[:food][:recipe_id]), food: @food, quantity: params[:food][:recipe_food_quantity]) if params[:food][:recipe_id]
+        if params[:food][:recipe_id]
+          RecipeFood.create(recipe: Recipe.find(params[:food][:recipe_id]), food: @food,
+                            quantity: params[:food][:recipe_food_quantity])
+        end
         format.html { redirect_to request.referrer, notice: 'Food was successfully created.' }
         format.json { render :show, status: :created, location: @food }
       else
@@ -65,7 +68,7 @@ class FoodsController < ApplicationController
   def set_food
     @food = Food.find(params[:id])
   end
- 
+
   # Only allow a list of trusted parameters through.
   def food_params
     params.require(:food).permit(:name, :unit, :price, :quantity)
