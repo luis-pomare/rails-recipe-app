@@ -2,11 +2,13 @@
 
 <div id="available-foods">
   <p>Choose one food</p>
-  
   <%= render "ingredient_form", new_recipe_food: @new_recipe_food %>  
+  
+  <p>Add a new food</p>
+  <%= render partial: "foods/form", locals: {food: @new_food} %>  
+
 </div>
 
-<p>Add new food</p>
 
 <div>
   <%= link_to "Back to recipes", recipes_path %>
