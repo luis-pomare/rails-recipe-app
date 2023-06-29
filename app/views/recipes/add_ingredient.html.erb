@@ -5,7 +5,7 @@
   <%= render "ingredient_form", new_recipe_food: @new_recipe_food %>  
   
   <p>Add a new food</p>
-  <%= render partial: "foods/form", locals: {food: @new_food} %>  
+  <%= render "food_form", food: @new_food %>  
 
 </div>
 
