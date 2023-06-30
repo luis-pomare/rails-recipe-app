@@ -24,6 +24,7 @@
   <%= link_to "Back to recipes", recipes_path %>
 
   <%= button_to "Destroy this recipe", @recipe, method: :delete %>
+  <%= link_to "Generate shopping list", shopping_list_recipe_path(@recipe) %>
 </div>
 
-    <%= render 'ingredients_list' %>
+<%= render 'ingredients_list' %>
