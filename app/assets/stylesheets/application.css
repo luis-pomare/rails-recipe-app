@@ -4,7 +4,7 @@
 table {
   font-family: arial, sans-serif;
   border-collapse: collapse;
-  width: 80%;
+  margin: 25px;
 }
 
 td,
@@ -16,4 +16,8 @@ th {
 
 tr:nth-child(even) {
   background-color: #ddd;
+}
+
+body {
+  padding: 15px;
 }
