@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   resources :recipes do
     member do
       get 'add_ingredient'
+      get 'shopping_list'
     end
   end
 
