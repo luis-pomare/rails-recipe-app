@@ -20,14 +20,19 @@ class FoodsController < ApplicationController
 
   # POST /foods or /foods.json
   def create
-    @food = Food.new(food_params)
+    @food = Food.new(food_params.except(:recipe_food_quantity))
+    @food.user = current_user
 
     respond_to do |format|
       if @food.save
-        format.html { redirect_to food_url(@food), notice: 'Food was successfully created.' }
+        if params[:food][:recipe_id]
+          RecipeFood.create(recipe: Recipe.find(params[:food][:recipe_id]), food: @food,
+                            quantity: params[:food][:recipe_food_quantity])
+        end
+        format.html { redirect_to request.referrer, notice: 'Food was successfully created.' }
         format.json { render :show, status: :created, location: @food }
       else
-        format.html { render :new, status: :unprocessable_entity }
+        format.html { redirect_to request.referrer, status: :unprocessable_entity }
         format.json { render json: @food.errors, status: :unprocessable_entity }
       end
     end
@@ -37,7 +42,7 @@ class FoodsController < ApplicationController
   def update
     respond_to do |format|
       if @food.update(food_params)
-        format.html { redirect_to food_url(@food), notice: 'Food was successfully updated.' }
+        format.html { redirect_to request.referrer, notice: 'Food was successfully updated.' }
         format.json { render :show, status: :ok, location: @food }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -48,10 +53,12 @@ class FoodsController < ApplicationController
 
   # DELETE /foods/1 or /foods/1.json
   def destroy
+    @recipe_foods = @food.recipe_food
+    @recipe_foods.destroy_all
     @food.destroy
 
     respond_to do |format|
-      format.html { redirect_to foods_url, notice: 'Food was successfully destroyed.' }
+      format.html { redirect_to request.referrer, notice: 'Food was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -65,6 +72,6 @@ class FoodsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def food_params
-    params.require(:food).permit(:name, :unit, :price, :quantity, :user_id)
+    params.require(:food).permit(:name, :unit, :price, :quantity)
   end
 end

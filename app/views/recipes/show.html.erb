@@ -1,10 +1,29 @@
 <p style="color: green"><%= notice %></p>
 
-<%= render @recipe %>
+<div class='recipe_container'>
+  <%= form_with(model: @recipe, url: "/recipes/#{@recipe.id}", method: :patch, class: 'form_to_public_toggle') do |form| %>
+    <%= form.check_box :public, checked: !@recipe.public?, class: 'no_visible'%>
 
-<div>
-  <%= link_to "Edit this recipe", edit_recipe_path(@recipe) %> |
-  <%= link_to "Back to recipes", recipes_path %>
+    <% if @recipe.public %>
+    <% button_message = 'Make recipe private' %>
+    <% button_class = 'make-recipe-private' %>
+    <% else %>
+    <% button_message = 'Make recipe public' %>
+    <% button_class = 'make-recipe-public' %>
+    <% end %>
 
-  <%= button_to "Destroy this recipe", @recipe, method: :delete %>
+    <%= form.submit "#{button_message}", class: "#{button_class}" %>
+  <% end %>
+
+  <%= render @recipe %>
+  <div class='recipe_show_links'>
+    <%= link_to "Add an ingredient", add_ingredient_recipe_path(@recipe) %> |
+    <%= link_to "Edit this recipe", edit_recipe_path(@recipe) %> |
+    <%= link_to "Back to recipes", recipes_path %>
+  </div>
+
+  <%= render 'ingredients_list' %>
+
 </div>
+
+<%= button_to "Erase this recipe", @recipe, method: :delete %>
