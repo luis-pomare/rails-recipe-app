@@ -3,7 +3,16 @@
 <% elements_to_buy = [] %>
 
 <% @recipe_foods.each do |recipe_food| %>
-  <% elements_to_buy << recipe_food if @user_foods.none? { |food| food.id == recipe_food.food.id } %>
+  <% if @user_foods.none? { |food| food.id == recipe_food.food.id } %>
+    <% elements_to_buy << recipe_food %>
+  <% else %>
+    <% user_food = @user_foods.find { |food| food.id == recipe_food.food.id } %>
+    <%if user_food.quantity < recipe_food.quantity%>
+      <% element_to_buy = recipe_food.dup %>
+      <% element_to_buy.quantity = recipe_food.quantity - user_food.quantity %>
+      <% elements_to_buy << element_to_buy %>
+    <% end %>
+  <% end %>
 <% end %>
 
 <% if elements_to_buy.length > 0 %>
