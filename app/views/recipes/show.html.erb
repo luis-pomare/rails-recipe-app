@@ -1,7 +1,7 @@
 <p style="color: green"><%= notice %></p>
 
 <div class='recipe_container'>
-  <%= form_with(model: @recipe, url: "/recipes/#{@recipe.id}", method: :patch) do |form| %>
+  <%= form_with(model: @recipe, url: "/recipes/#{@recipe.id}", method: :patch, class: 'form_to_public_toggle') do |form| %>
     <%= form.check_box :public, checked: !@recipe.public?, class: 'no_visible'%>
 
     <% if @recipe.public %>
@@ -16,8 +16,17 @@
   <% end %>
 
   <%= render @recipe %>
+  <div class='recipe_show_links'>
+    <%= link_to "Add an ingredient", add_ingredient_recipe_path(@recipe) %> |
+    <%= link_to "Edit this recipe", edit_recipe_path(@recipe) %> |
+    <%= link_to "Back to recipes", recipes_path %>
+  </div>
+
+  <%= render 'ingredients_list' %>
+
 </div>
 
+<<<<<<< HEAD
 <div>
   <%= link_to "Add an ingredient", add_ingredient_recipe_path(@recipe) %> |
   <%= link_to "Edit this recipe", edit_recipe_path(@recipe) %> |
@@ -28,3 +37,6 @@
 </div>
 
 <%= render 'ingredients_list' %>
+=======
+<%= button_to "Erase this recipe", @recipe, method: :delete %>
+>>>>>>> development
