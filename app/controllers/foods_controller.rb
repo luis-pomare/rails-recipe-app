@@ -2,8 +2,8 @@ class FoodsController < ApplicationController
   before_action :set_food, only: %i[show edit update destroy]
   before_action :authenticate_user! # Add this line if you want to authenticate users
 
-   # GET /foods or /foods.json
-   def index
+  # GET /foods or /foods.json
+  def index
     @foods = Food.all
   end
 
