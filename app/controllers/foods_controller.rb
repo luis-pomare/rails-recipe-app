@@ -1,8 +1,9 @@
 class FoodsController < ApplicationController
   before_action :set_food, only: %i[show edit update destroy]
+  before_action :authenticate_user! # Add this line if you want to authenticate users
 
-  # GET /foods or /foods.json
-  def index
+   # GET /foods or /foods.json
+   def index
     @foods = Food.all
   end
 
@@ -64,6 +65,6 @@ class FoodsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def food_params
-    params.require(:food).permit(:Name, :unit, :price, :quantity, :user_id)
+    params.require(:food).permit(:name, :unit, :price, :quantity, :user_id)
   end
 end
