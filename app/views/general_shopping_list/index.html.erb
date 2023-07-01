@@ -1,1 +1,26 @@
-<%=@recipe_foods[0].recipe.name %>
+<h1>General shopping list</h1>
+
+<% elements_to_buy = [] %>
+
+<% @recipe_foods.each do |recipe_food| %>
+  <% if @foods.none? { |food| food.id == recipe_food.food.id } %>
+    <% elements_to_buy << recipe_food %>
+  <% else %>
+    <% user_food = @foods.find { |food| food.id == recipe_food.food.id } %>
+    <%if user_food.quantity < recipe_food.quantity%>
+      <% element_to_buy = recipe_food.dup %>
+      <% element_to_buy.quantity = recipe_food.quantity - user_food.quantity %>
+      <% elements_to_buy << element_to_buy %>
+    <% end %>
+  <% end %>
+<% end %>
+
+<% if elements_to_buy.length > 0 %>
+  <ul>
+    <% elements_to_buy.each do |elements_to_buy| %>
+      <li><%= elements_to_buy.food.name %>: <%= elements_to_buy.quantity %> <%= elements_to_buy.food.unit %></li>
+    <% end %>
+  </ul>
+<% else %>
+  <h4>You have everything you need to cook this recipe :-)</h4>
+<% end %>
