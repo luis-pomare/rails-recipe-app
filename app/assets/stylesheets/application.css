@@ -67,9 +67,24 @@ body {
     color: black;
   }
 
+  .recipes_head button {
+    border: none;
+    color: #0d6efd;
+    text-decoration: underline;
+  }
+
   .action_delete button {
     border: none;
     color: #0d6efd;
     text-decoration: underline;
   }
+}
+
+.recipes_head h2,
+p {
+  color: black;
+}
+
+.recipes_head {
+  text-decoration: none;
 }
