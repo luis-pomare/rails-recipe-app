@@ -55,7 +55,7 @@ group :development, :test do
   gem 'capybara'
   gem 'debug', platforms: %i[mri mingw x64_mingw]
   gem 'rspec-rails'
-  gem 'webdrivers', '~> 4.0', require: false
+  gem 'webdrivers', require: false
 end
 
 group :development do
