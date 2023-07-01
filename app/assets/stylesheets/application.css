@@ -1,5 +1,6 @@
 @import 'recipe_show';
 @import 'add_ingredient';
+@import 'shopping_list';
 
 table {
   font-family: arial, sans-serif;
@@ -20,6 +21,7 @@ tr:nth-child(even) {
 
 body {
   padding: 15px;
+
   #foods {
     border: 1px solid black;
     border-radius: 10px;
@@ -56,4 +58,3 @@ body {
     text-decoration: underline;
   }
 }
-

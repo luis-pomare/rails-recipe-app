@@ -7,6 +7,6 @@ class GeneralShoppingListController < ApplicationController
       recipe.recipe_food.each do |recipe_food|
         @recipe_foods << recipe_food
       end
-    end 
+    end
   end
 end
