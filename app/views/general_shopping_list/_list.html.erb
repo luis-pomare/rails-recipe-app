@@ -1,0 +1,19 @@
+<table>
+  <tr>
+    <th>Food</th>
+    <th>Quantity</th>
+    <th>Value</th>
+    <th>Actions</th>
+  </tr>
+  <% elements_to_buy.each do |element| %>
+    <tr>
+      <td><%= element.food.name %></td>
+      <td><%= element.quantity %></td>
+      <td><%= element.food.price %></td>
+      <td>
+        <%= button_to "Destroy", element.food, method: :delete, class: 'table_button' %>,
+        <%= link_to "Edit", edit_food_path(element.food) %>
+      </td>
+    </tr>
+  <% end %>
+</table>
