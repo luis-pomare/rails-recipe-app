@@ -2,12 +2,12 @@ class Ability
   include CanCan::Ability
 
   def initialize(user)
-    user ||= User.new # Guest user
-
-    # Define abilities for the user role
-    return unless user.role == 'user'
-
-    can :read, Food, published: true
-    can :index, Food
+    user ||= User.new
+    if (user.role = 'admin')
+      can :manage, Food, user_id: user.id
+      can :manage, Recipe, user_id: user.id
+    else
+      can :read, :all
+    end
   end
 end
