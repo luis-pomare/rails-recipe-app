@@ -22,8 +22,12 @@
     <%= link_to "Back to recipes", recipes_path %>
   </div>
 
+  <%= link_to "Generate shopping list", shopping_list_recipe_path(@recipe) %>
   <%= render 'ingredients_list' %>
 
 </div>
 
-<%= button_to "Erase this recipe", @recipe, method: :delete %>
+<div>
+
+  <%= button_to "Destroy this recipe", @recipe, method: :delete %>
+</div>
