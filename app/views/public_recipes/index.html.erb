@@ -7,7 +7,7 @@
 
   <div id="recipes">
     <% @recipes.each do |recipe| %>
-      <div class="row border border-black p-2 m-3 recipes_head">
+      <%= link_to recipe, class: "row border border-black p-2 m-3 recipes_head" do %>
         <div class="col-md-3">
           <h2><%= recipe.name %></h2>
           <% user = User.find_by(id: recipe.user_id) %>
@@ -16,7 +16,7 @@
         <div class="col-md-9">
           <p><%= recipe.description %></p>
         </div>
-      </div>
+      <% end %>
     <% end %>
-  </div>
+  
 </div>
