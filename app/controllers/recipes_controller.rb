@@ -1,10 +1,6 @@
 class RecipesController < ApplicationController
-<<<<<<< HEAD
   before_action :set_recipe, only: %i[show edit update destroy add_ingredient]
   before_action :authenticate_user!
-=======
-  before_action :set_recipe, only: %i[show edit update destroy add_ingredient shopping_list]
->>>>>>> 525e66170c2a78cd5982edcfb8ca9ec48765e85c
 
   # GET /recipes or /recipes.json
   def index
