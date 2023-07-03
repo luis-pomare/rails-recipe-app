@@ -1,0 +1,22 @@
+.no_visible {
+  display: none;
+}
+
+.make-recipe-public {
+  color: #0c5;
+  border: 3px solid #0c5;
+}
+
+.recipe_container {
+  display: flex;
+  flex-direction: column;
+}
+
+.form_to_public_toggle,
+.recipe_show_links {
+  align-self: flex-end;
+}
+
+#recipe_show_title {
+  align-self: center;
+}

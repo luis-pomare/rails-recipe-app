@@ -1,0 +1,22 @@
+<p style="color: green"><%= notice %></p>
+
+<div class="container">
+  <div class="text-center">
+    <h1>Recipes shared by the comunity</h1>
+  </div>
+
+  <div id="recipes">
+    <% @recipes.each do |recipe| %>
+      <%= link_to recipe, class: "row border border-black p-2 m-3 recipes_head" do %>
+        <div class="col-md-3">
+          <h2><%= recipe.name %></h2>
+          <% user = User.find_by(id: recipe.user_id) %>
+          <p>By <%= user.name if user %></p>
+        </div>
+        <div class="col-md-9">
+          <p><%= recipe.description %></p>
+        </div>
+      <% end %>
+    <% end %>
+  
+</div>
